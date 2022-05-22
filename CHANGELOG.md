@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 0.2.0
+
+- Add ASDF tool versions
+  - nodejs: 16.14.0
+  - yarn: 1.22.17
+- Add default layout
+
 ## 0.1.2
 
 - Add this CHANGELOG
