@@ -1,5 +1,7 @@
 # nuxtstuff
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d3b6aa90-5dcd-4bcc-8e2f-eeba189f3584/deploy-status)](https://app.netlify.com/sites/fluffy-fox-512437/deploys)
+
 ## Build Setup
 
 ```bash
