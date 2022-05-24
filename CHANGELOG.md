@@ -6,6 +6,8 @@
   - nodejs: 16.14.0
   - yarn: 1.22.17
 - Add default layout
+- Update Twitter and GitHub icon links
+- Add a TextLink component
 
 ## 0.1.2
 
