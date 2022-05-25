@@ -7,11 +7,6 @@
   </IconWrapper>
 </template>
 
-<script>
-import IconWrapper from "~/components/icons/IconWrapper";
-
-export default {
-  name: "TwitterIcon",
-  components: {IconWrapper}
-}
+<script lang="ts" setup>
+import IconWrapper from '~/components/icons/IconWrapper'
 </script>

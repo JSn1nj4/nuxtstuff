@@ -16,34 +16,26 @@
   </a>
 </template>
 
-<script>
-export default {
-  name: "IconWrapper",
-  props: {
-    href: {
-      type: String,
-      default: '/',
-    },
-    target: {
-      type: String,
-      default: '_blank',
-    },
-    type: {
-      type: String,
-      default: '',
-    },
-  },
+<script lang="ts" setup>
+import { computed } from 'vue'
 
-  computed: {
-    typeClass() {
-      const classes = {
-        github: 'button--github',
-      };
+const props = withDefaults(defineProps<{
+  href: string,
+  target?: string,
+  type?: string
+}>(), {
+  href: '',
+  target: '_blank',
+  type: '',
+})
 
-      if(classes[this.type] === undefined) return '';
+const typeClass = computed((): string => {
+  const classes: object = {
+    github: 'button--github',
+  };
 
-      return ' ' + classes[this.type];
-    }
-  }
-}
+  if(classes[props.type] === undefined) return '';
+
+  return ' ' + classes[props.type];
+});
 </script>
