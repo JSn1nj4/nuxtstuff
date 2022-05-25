@@ -7,10 +7,6 @@
   </IconWrapper>
 </template>
 
-<script>
-import IconWrapper from "~/components/icons/IconWrapper";
-export default {
-  name: "GithubIcon",
-  components: {IconWrapper}
-}
+<script lang="ts" setup>
+import IconWrapper from "~/components/icons/IconWrapper.vue"
 </script>

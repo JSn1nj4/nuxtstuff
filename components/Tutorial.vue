@@ -22,22 +22,13 @@
       </p>
     </div>
     <div class="flex justify-center pt-4 space-x-2">
-      <GithubIcon></GithubIcon>
-      <TwitterIcon></TwitterIcon>
+      <GithubIcon />
+      <TwitterIcon />
     </div>
   </div>
 </template>
 
-<script>
-import GithubIcon from '~/components/icons/GithubIcon'
-import TwitterIcon from "~/components/icons/TwitterIcon";
-
-export default {
-  name: 'NuxtTutorial',
-  components: {
-    GithubIcon,
-    TwitterIcon
-  },
-
-}
+<script lang="ts" setup>
+import GithubIcon from '~/components/icons/GithubIcon.vue'
+import TwitterIcon from '~/components/icons/TwitterIcon.vue'
 </script>

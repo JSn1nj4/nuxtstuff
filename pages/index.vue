@@ -2,10 +2,6 @@
   <Tutorial />
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
-
-export default Vue.extend({
-  name: 'IndexPage',
-})
+<script lang="ts" setup>
+import Tutorial from '~/components/Tutorial.vue'
 </script>

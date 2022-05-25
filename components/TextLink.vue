@@ -8,15 +8,11 @@
   </a>
 </template>
 
-<script>
-export default {
-  name: "TextLink",
-  props: {
-    href: String,
-    target: {
-      type: String,
-      default: "_self",
-    }
-  }
-}
+<script lang="ts" setup>
+const props = withDefaults(defineProps<{
+  href: string,
+  target?: string
+}>(), {
+  target: '_self',
+})
 </script>
