@@ -8,6 +8,7 @@
 - Add default layout
 - Update Twitter and GitHub icon links
 - Add a TextLink component
+- Complete upgrade from Nuxt 2 to 3
 
 ## 0.1.2
 
