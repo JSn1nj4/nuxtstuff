@@ -1,14 +1,18 @@
 name: nuxtstuff
 proxy:
   appserver:
-    - nuxtstuff.lndo.site
+    - nuxtstuff.lndo.site:443
 services:
   appserver:
     type: node:16
-    command: yarn dev --hostname 0.0.0.0 --port 80
+    command: yarn dev --host 0.0.0.0 --port 80
+#    command: yarn dev --https --host 0.0.0.0 --port 443 --ssl-cert /certs/cert.crt
     ssl: true
     install_dependencies_as_me:
       - yarn install
+    ports: # ports Vite seems to use
+      - 24678:24678
+      - 24679:24679
 tooling:
   yarn:
     service: appserver
