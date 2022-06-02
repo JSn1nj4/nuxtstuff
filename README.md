@@ -6,7 +6,10 @@ Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
 
 ## Setup for Lando dev
 
-Start Lando container, creating if it doesn't already exist
+_Note: dev using HTTPS with this project is not currently possible. Websockets over HTTPS don't work out of the box, probably because they must run on a separate port. This is yet to be resolved on this project._
+
+### Start Lando container
+This creates the container if it doesn't already exist
 
 ```bash
 lando start
