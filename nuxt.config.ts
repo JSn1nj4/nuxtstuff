@@ -4,6 +4,7 @@ import {
   ServerOptions,
   UserConfig
 } from "vite";
+import {integer} from "vscode-languageserver-types";
 
 // Import environment variables
 const {
@@ -40,11 +41,25 @@ if(VITE_SERVER_HOST) {
 }
 if(Object.keys(server).length > 0) vite.server = server
 
-// config
-type nuxtConfig = {
-  vite?: UserConfig,
+type TailwindConfig = {
+  cssPath?: string,
+  configPath?: string,
+  exposeConfig?: boolean,
+  config?: object,
+  injectionPosition?: number,
+  viewer?: boolean,
 }
-const config: nuxtConfig = {}
+
+// config
+type NuxtConfig = {
+  vite?: UserConfig,
+  modules?: string[],
+  tailwindcss?: TailwindConfig,
+}
+const config: NuxtConfig = {}
+config.modules = [
+  '@nuxtjs/tailwindcss',
+];
 if(Object.keys(vite).length > 0) config.vite = vite
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config

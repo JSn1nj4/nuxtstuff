@@ -1,0 +1,8 @@
+@tailwind base;
+/* Global CSS styles go here */
+
+@tailwind components;
+/* Custom components can be defined here */
+
+@tailwind utilities;
+/* Custom utilities go here */
