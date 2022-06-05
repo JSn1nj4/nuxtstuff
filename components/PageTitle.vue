@@ -13,8 +13,6 @@
 <script setup lang="ts">
 import {defineProps} from "@vue/runtime-core";
 
-import TextHeading from '~/components/TextHeading.vue'
-
 const props = withDefaults(defineProps<{
   title?: string,
   href?: string,

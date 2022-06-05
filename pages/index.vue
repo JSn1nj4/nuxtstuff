@@ -17,18 +17,14 @@
       </p>
     </div>
     <div class="flex justify-center pt-4 space-x-2">
-      <GithubIcon />
-      <TwitterIcon />
+      <IconsGithubIcon />
+      <IconsTwitterIcon />
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import {ref} from "#imports";
-import GithubIcon from '~/components/icons/GithubIcon.vue'
-import TwitterIcon from '~/components/icons/TwitterIcon.vue'
-import PageTitle from '~/components/PageTitle.vue'
-import TextHeading from '~/components/TextHeading.vue'
 
 const title = ref('Home')
 </script>
