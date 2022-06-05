@@ -14,12 +14,10 @@
 import {defineProps} from "@vue/runtime-core";
 
 const props = withDefaults(defineProps<{
-  title?: string,
   href?: string,
-  }>(),
-  {
-    title: 'NuxtStuff',
-    href: '/',
-  }
-)
+  title?: string,
+}>(), {
+  href: '/',
+  title: 'NuxtStuff',
+})
 </script>
