@@ -6,11 +6,10 @@ services:
   appserver:
     type: node:16
     command: yarn dev --host 0.0.0.0 --port 80
-#    command: yarn dev --https --host 0.0.0.0 --port 443 --ssl-cert /certs/cert.crt
     ssl: true
     install_dependencies_as_me:
       - yarn install
-    ports: # ports Vite seems to use
+    ports:
       - 24678:24678
       - 24679:24679
 tooling:
