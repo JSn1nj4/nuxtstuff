@@ -5,11 +5,11 @@
       <Meta name="description" content="A collection of mini Vue projects" />
     </Head>
     <PageTitle />
-    <div class="mt-8 bg-white overflow-hidden shadow sm:rounded-lg p-6">
-      <TextHeading type="h2">
+    <div class="mt-8 bg-white dark:bg-slate-700 overflow-hidden shadow sm:rounded-lg p-6">
+      <TextHeading type="h2" class="text-teal-900 dark:text-teal-100">
         A collection of front-end mini projects built in Nuxt
       </TextHeading>
-      <p class="mt-3 text-gray-600">
+      <p class="mt-3 text-gray-600 dark:text-gray-300">
         Have a look around! If something is broken or you have a suggestion, feel free to open an
         <TextLink href="https://github.com/JSn1nj4/nuxtstuff/issues" target="_blank">issue</TextLink>
         or submit a

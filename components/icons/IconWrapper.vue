@@ -1,7 +1,8 @@
 <template>
   <a :href="href" :target="target">
     <svg
-      :class="'w-6 h-6 text-gray-600 hover:text-gray-800' + typeClass"
+      class="w-6 h-6 text-gray-600 dark:text-gray-400 hover:text-gray-800 hover:dark:text-teal-400"
+      :class="typeClass"
       xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink"
       aria-hidden="true"

@@ -1,5 +1,5 @@
 <template>
-  <component :is="type" :class="classes ?? typeClasses[type]">
+  <component :is="type" class="leading-7 font-semibold" :class="classes ?? typeClasses[type]">
     <slot />
   </component >
 </template>
@@ -15,7 +15,7 @@ const props = withDefaults(defineProps<{
 })
 
 const typeClasses: object = {
-  h1: 'text-4xl leading-7 font-semibold',
-  h2: 'text-2xl leading-7 font-semibold',
+  h1: 'text-4xl',
+  h2: 'text-2xl',
 }
 </script>
