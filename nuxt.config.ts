@@ -5,6 +5,7 @@ import {
   UserConfig
 } from "vite";
 import { NuxtConfig } from "@nuxt/schema";
+import * as fs from "fs";
 
 // Import environment variables
 const {
@@ -31,7 +32,11 @@ if(Object.keys(hmr).length > 0) server.hmr = hmr
 // config.vite
 const vite: UserConfig = {}
 if(VITE_SERVER_HTTPS) {
-  server.https = VITE_SERVER_HTTPS === 'true'
+  server.https = VITE_SERVER_HTTPS === 'true' ?
+    {
+      cert: fs.readFileSync('/certs/cert.crt'),
+      key: fs.readFileSync('/certs/cert.key'),
+    } :  false
 }
 if(VITE_SERVER_HOST) {
   server.host = VITE_SERVER_HOST !== "true" ?

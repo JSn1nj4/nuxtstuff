@@ -1,7 +1,7 @@
 name: nuxtstuff
 proxy:
   appserver:
-    - nuxtstuff.lndo.site:443
+    - nuxtstuff.lndo.site
 services:
   appserver:
     type: node:16
