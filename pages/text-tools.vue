@@ -14,7 +14,7 @@
       </TextHeading>
        <div class="grid grid-cols-3 gap-10 dark:text-white mt-4 pt-4 border-t-2 border-t-teal-500 border-dashed">
         <div class="dark:bg-slate-500 mt-0.5">
-          <FormRadioGroup :list="radioList" text-size="text-lg" />
+          <FormRadioGroup :list="radioList" name="transform" text-size="text-lg" />
         </div>
         <div class="col-span-2 dark:bg-slate-500">
           <TextHeading type="h4" class="text-slate-900 dark:text-slate-400">Input</TextHeading>
