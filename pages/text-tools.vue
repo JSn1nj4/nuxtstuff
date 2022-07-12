@@ -1,7 +1,7 @@
 <template>
   <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
     <Head>
-      <Title>{{title}}</Title>
+      <Title>{{ title }}</Title>
       <Meta name="description" content="A collection of mini Vue projects" />
     </Head>
     <PageTitle :title="title" />
@@ -14,13 +14,13 @@
       </TextHeading>
        <div class="grid grid-cols-3 gap-10 dark:text-white mt-4 pt-4 border-t-2 border-t-teal-500 border-dashed">
         <div class="dark:bg-slate-500 mt-0.5">
-          <FormRadioGroup :list="radioList" name="transform" text-size="text-lg" />
+          <FormRadioGroup :list="radioList" name="transform" text-size="text-lg" :click-handler="setFilter" />
         </div>
         <div class="col-span-2 dark:bg-slate-500">
           <TextHeading type="h4" class="text-slate-900 dark:text-slate-400">Input</TextHeading>
-          <textarea type="text" class="w-full border-2 border-solid border-slate-400 rounded mb-4" />
+          <textarea type="text" class="w-full border-2 border-solid border-slate-400 rounded mb-4" @keyup="setInput" />
           <TextHeading type="h4" class="text-slate-900 dark:text-slate-400">Output</TextHeading>
-          <div type="text" class="w-full border-2 border-solid border-slate-300 rounded h-36"></div>
+          <div type="text" class="w-full border-2 border-solid border-slate-300 rounded h-36">{{ output }}</div>
         </div>
       </div>
     </div>
@@ -33,6 +33,30 @@
 
 <script lang="ts" setup>
 const title = ref('Text Tools')
+const mutators = {
+  capitalize: (v: string): string => {
+    return v.charAt(0).toUpperCase() + v.substring(1).toLowerCase()
+  },
+  uppercase: (v: string): string => v.toUpperCase(),
+  lowercase: (v: string): string => v.toLowerCase(),
+  titlecase: (v: string): string => {
+    return v.split(' ').map(mutators.capitalize).join(' ')
+  },
+  urlencode: (v: string): string => encodeURIComponent(v),
+  urldecode: (v: string): string => decodeURIComponent(v),
+}
+
+const input = ref('')
+const filter = ref<Function>((v: string): string => v)
+const output = computed((): string => filter.value(input.value))
+
+function setInput(e: Event): void {
+  input.value = (e.target as HTMLInputElement).value
+}
+
+function setFilter(e: Event): void {
+  filter.value = mutators[(e.target as HTMLInputElement).value]
+}
 
 const radioList = [
   { label: 'Capitalize', id: 'capitalize', value: 'capitalize', },

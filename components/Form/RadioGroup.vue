@@ -1,18 +1,21 @@
 <template>
-  <FormRadioButton
-    v-for="(radio, index) in list"
-    key="index"
-    :class="{
-      [textSize]: !!textSize,
-      [spacing]: !!spacing,
-      'last:mb-0': list.length > 1 && index === list.length - 1
-    }"
-    :id="radio.id"
-    :name="name"
-    :value="radio.value"
-  >
-    {{ radio.label }}
-  </FormRadioButton>
+  <div class="form-radio-group">
+    <FormRadioButton
+      v-for="(radio, index) in list"
+      key="index"
+      :class="{
+        [textSize]: !!textSize,
+        [spacing]: !!spacing,
+        'last:mb-0': list.length > 1 && index === list.length - 1
+      }"
+      :id="radio.id"
+      :name="name"
+      :value="radio.value"
+      :click-handler="clickHandler"
+    >
+      {{ radio.label }}
+    </FormRadioButton>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -26,6 +29,7 @@ interface RadioList {
 }
 
 const props = withDefaults(defineProps<{
+  clickHandler?: Function,
   list: RadioList[],
   name: string,
   spacing?: BorderBottom,
