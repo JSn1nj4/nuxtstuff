@@ -1,6 +1,6 @@
 <template>
   <a
-    class="flex justify-center pt-8 sm:pt-0 text-teal-900 dark:text-teal-400"
+    class="flex justify-center pt-8 sm:pt-0 text-emerald-700 dark:text-emerald-400"
     :href="href"
     target="_blank"
   >
