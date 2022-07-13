@@ -17,5 +17,6 @@ const props = withDefaults(defineProps<{
 const typeClasses: object = {
   h1: 'text-4xl',
   h2: 'text-2xl',
+  h3: 'text-xl',
 }
 </script>

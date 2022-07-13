@@ -2,7 +2,7 @@
   <a
     :href="href"
     :target="target"
-    class="text-green-500 hover:underline"
+    class="transition-colors text-green-500 hover:underline"
   >
     <slot></slot>
   </a>
