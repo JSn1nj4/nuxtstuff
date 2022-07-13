@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.0.1
+
+- Ignore .netlify folder
+
 ## 1.0.0
 
 - Add ASDF tool versions
