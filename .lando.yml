@@ -5,10 +5,13 @@ proxy:
 services:
   appserver:
     type: node:16
-    command: yarn dev --hostname 0.0.0.0 --port 80
+    command: yarn dev --host 0.0.0.0 --port 80
     ssl: true
     install_dependencies_as_me:
       - yarn install
+    ports:
+      - 24678:24678
+      - 24679:24679
 tooling:
   yarn:
     service: appserver
