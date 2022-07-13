@@ -2,12 +2,6 @@
 
 ## 1.0.0
 
-- Fix Lando dev config
-- Add Text Tools page
-- Lots of light/dark UI tweaks
-
-## 0.2.0
-
 - Add ASDF tool versions
   - nodejs: 16.14.0
   - yarn: 1.22.17
@@ -15,6 +9,9 @@
 - Update Twitter and GitHub icon links
 - Add a TextLink component
 - Complete upgrade from Nuxt 2 to 3
+- Fix Lando dev config
+- Add Text Tools page
+- Lots of light/dark UI tweaks
 
 ## 0.1.2
 
