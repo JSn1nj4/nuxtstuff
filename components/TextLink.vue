@@ -1,11 +1,11 @@
 <template>
-  <a
+  <NuxtLink
     :href="href"
     :target="target"
-    class="transition-colors text-green-500 hover:underline"
+    class="transition-colors text-emerald-600 dark:text-emerald-500 hover:underline"
   >
     <slot></slot>
-  </a>
+  </NuxtLink>
 </template>
 
 <script lang="ts" setup>

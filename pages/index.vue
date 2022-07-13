@@ -15,6 +15,14 @@
         or submit a
         <TextLink href="https://github.com/JSn1nj4/nuxtstuff/pulls" target="_blank">pull request</TextLink>.
       </p>
+      <div class="block sm:grid sm:grid-cols-3 gap-10 dark:text-white mt-4 pt-4 border-t-2 border-t-emerald-500 border-dashed">
+        <div class="mt-0.5 mb-4 sm:mb-0 col-span-3">
+          <TextHeading type="h3">
+            <TextLink href="/text-tools">Text Tools</TextLink>
+          </TextHeading>
+          <p class="text">Simple text-formatting tools to help transform content</p>
+        </div>
+      </div>
     </div>
     <div class="flex justify-center pt-4 space-x-2">
       <IconsGithubIcon />
