@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 1.0.0
+
+- Fix Lando dev config
+- Add Text Tools page
+- Lots of light/dark UI tweaks
+
 ## 0.2.0
 
 - Add ASDF tool versions
