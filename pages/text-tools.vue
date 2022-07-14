@@ -4,13 +4,11 @@
       <Title>{{ title }}</Title>
       <Meta name="description" content="A collection of mini Vue projects" />
     </Head>
-    <PageTitle :title="title" />
+    <Logo />
     <div class="mt-8 bg-white dark:bg-slate-700 overflow-hidden shadow sm:rounded-lg p-6">
-      <TextHeading type="h2" class="text-slate-900 dark:text-emerald-200 mb-3">
+      <PageTitle>{{ title }}</PageTitle>
+      <TextHeading type="h2" class="text-slate-900 dark:text-emerald-200 mb-3 font-normal">
         Simple text-formatting tools to help transform content
-      </TextHeading>
-      <TextHeading type="h3" class="text-emerald-800 dark:text-emerald-300">
-        Text transforming tools
       </TextHeading>
        <div class="block sm:grid sm:grid-cols-3 gap-10 dark:text-white mt-4 pt-4 border-t-2 border-t-emerald-500 border-dashed">
         <div class="mt-0.5 mb-4 sm:mb-0">
