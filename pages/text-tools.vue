@@ -1,36 +1,29 @@
 <template>
-  <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
+  <div class="mt-8 bg-white dark:bg-slate-700 overflow-hidden shadow sm:rounded-lg p-6">
     <Head>
       <Title>{{ title }}</Title>
       <Meta name="description" content="A collection of mini Vue projects" />
     </Head>
-    <Logo />
-    <div class="mt-8 bg-white dark:bg-slate-700 overflow-hidden shadow sm:rounded-lg p-6">
-      <PageTitle>{{ title }}</PageTitle>
-      <TextHeading type="h2" class="text-slate-900 dark:text-emerald-200 mb-3 font-normal">
-        Simple text-formatting tools to help transform content
-      </TextHeading>
-       <div class="block sm:grid sm:grid-cols-3 gap-10 dark:text-white mt-4 pt-4 border-t-2 border-t-emerald-500 border-dashed">
-        <div class="mt-0.5 mb-4 sm:mb-0">
-          <FormRadioGroup :list="radioList" name="transform" text-size="text-lg" :click-handler="setFilter" />
-        </div>
-        <div class="col-span-2">
-          <TextHeading type="h4" class="text-emerald-700 dark:text-emerald-500">Input</TextHeading>
-          <textarea type="text" class="w-full transition-colors border-2 border-solid border-slate-300 dark:border-slate-500 hover:border-slate-800 dark:hover:border-slate-400 rounded mb-4 p-2 bg-slate-100 dark:bg-slate-600 text-black dark:text-white" @keyup="setInput" />
-          <TextHeading type="h4" class="text-emerald-700 dark:text-emerald-500">Output</TextHeading>
-          <div class="w-full border-2 border-solid border-slate-200 dark:border-slate-600 rounded h-36 p-2 bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400">{{ output }}</div>
-        </div>
+    <TextHeading type="h2" class="text-slate-900 dark:text-emerald-200 mb-3 font-normal">
+      Simple text-formatting tools to help transform content
+    </TextHeading>
+     <div class="block sm:grid sm:grid-cols-3 gap-10 dark:text-white mt-4 pt-4 border-t-2 border-t-emerald-500 border-dashed">
+      <div class="mt-0.5 mb-4 sm:mb-0">
+        <FormRadioGroup :list="radioList" name="transform" text-size="text-lg" :click-handler="setFilter" />
       </div>
-    </div>
-    <div class="flex justify-center pt-4 space-x-2">
-      <IconsGithubIcon />
-      <IconsTwitterIcon />
+      <div class="col-span-2">
+        <TextHeading type="h4" class="text-emerald-700 dark:text-emerald-500">Input</TextHeading>
+        <textarea type="text" class="w-full transition-colors border-2 border-solid border-slate-300 dark:border-slate-500 hover:border-slate-800 dark:hover:border-slate-400 rounded mb-4 p-2 bg-slate-100 dark:bg-slate-600 text-black dark:text-white" @keyup="setInput" />
+        <TextHeading type="h4" class="text-emerald-700 dark:text-emerald-500">Output</TextHeading>
+        <div class="w-full border-2 border-solid border-slate-200 dark:border-slate-600 rounded h-36 p-2 bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400">{{ output }}</div>
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 const title = ref('Text Tools')
+
 const mutators = {
   capitalize: (v: string): string => {
     return v.charAt(0).toUpperCase() + v.substring(1).toLowerCase()
