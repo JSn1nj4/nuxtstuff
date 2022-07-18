@@ -5,7 +5,8 @@
     <div class="max-w-4xl w-full mx-auto sm:px-6 lg:px-8 flex justify-between">
       <Logo />
       <nav class="h-auto flex flex-row gap-8 text-slate-70 dark:text-slate-300">
-        <IconsGithubIcon href="https://github.com/JSn1nj4/nuxtstuff" title="GitHub Repository" class="h-full flex flex-col justify-center hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors" />
+        <NuxtLink v-for="link in links" :href="link.href" :target="link.target" class="h-full text-3xl flex flex-col justify-end hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">{{ link.name }}</NuxtLink>
+        <IconsGithubIcon href="https://github.com/JSn1nj4/nuxtstuff" title="GitHub Repository" class="h-full flex flex-col justify-end hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors" />
       </nav>
     </div>
     <div class="max-w-4xl w-full mx-auto sm:px-6 lg:px-8">
@@ -17,8 +18,20 @@
 
 <script setup lang="ts">
 import {ComputedRef} from "@vue/reactivity";
+import {Target} from "~/components/_types/html-attributes";
+
+interface NavLink {
+  name: string
+  href: string
+  target?: Target
+}
 
 const route = useRoute()
+
+const links: NavLink[] = [
+  { name: 'About', href: '/about', },
+  { name: 'Dev', href: 'https://elliotderhay.com', target: "_blank", },
+]
 
 const routeName: ComputedRef<string | null> = computed(() => {
   const blacklist = [
