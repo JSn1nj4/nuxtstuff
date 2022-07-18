@@ -5,7 +5,7 @@
     <div class="max-w-4xl w-full mx-auto sm:px-6 lg:px-8 block sm:flex gap-8 justify-between">
       <Logo />
       <nav class="h-auto flex flex-row gap-8 mt-8 sm:mt-0 text-slate-70 dark:text-slate-300 justify-center sm:justify-end-end">
-        <NuxtLink v-for="link in links" :href="link.href" :target="link.target" class="h-full text-3xl flex flex-col justify-end hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">{{ link.name }}</NuxtLink>
+        <NuxtLink v-for="link in links" :href="link.href" :target="link.target" class="h-full text-2xl flex flex-col justify-end hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">{{ link.name }}</NuxtLink>
         <IconsGithubIcon href="https://github.com/JSn1nj4/nuxtstuff" title="GitHub Repository" class="h-full flex flex-col justify-end hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors" />
       </nav>
     </div>
