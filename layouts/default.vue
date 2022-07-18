@@ -30,7 +30,7 @@ const route = useRoute()
 
 const links: NavLink[] = [
   { name: 'About', href: '/about', },
-  { name: 'Dev', href: 'https://elliotderhay.com', target: "_blank", },
+  { name: 'Developer', href: 'https://elliotderhay.com', target: "_blank", },
 ]
 
 const routeName: ComputedRef<string | null> = computed(() => {
