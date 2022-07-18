@@ -1,5 +1,4 @@
 <template>
-
   <svg viewBox="0 0 1259.2 273.08" xmlns="http://www.w3.org/2000/svg">
    <g transform="translate(-243.97 -210.77)" display="none" fill="#7d4f3b">
     <path d="m363.14 356.2-6.859 0.11692-0.0235-37.482 6.0135-10.609 38.963 7.6603-3.4722 6.0626-35.646-6.8792z"/>

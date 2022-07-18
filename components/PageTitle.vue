@@ -1,8 +1,8 @@
 <template>
   <div
-    class="flex justify-center pt-8 sm:pt-0 text-slate-800 dark:text-white"
+    class="flex justify-center mt-4 mb-8 border-dashed border-t-2 border-t-slate-300/70 dark:border-t-slate-300/20 pt-8 text-slate-800 dark:text-white"
   >
-    <TextHeading class="font-normal">
+    <TextHeading weight="font-light">
       <slot />
     </TextHeading>
   </div>

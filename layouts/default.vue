@@ -1,15 +1,16 @@
 <template>
   <div
-    class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0"
+    class="relative flex flex-col items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0"
   >
-    <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
+    <div class="max-w-4xl w-full mx-auto sm:px-6 lg:px-8 flex justify-between">
       <Logo />
+      <nav class="h-auto flex flex-row gap-8 text-slate-70 dark:text-slate-300">
+        <IconsGithubIcon href="https://github.com/JSn1nj4/nuxtstuff" title="GitHub Repository" class="h-full flex flex-col justify-center hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors" />
+      </nav>
+    </div>
+    <div class="max-w-4xl w-full mx-auto sm:px-6 lg:px-8">
       <PageTitle v-if="routeName">{{ routeName }}</PageTitle>
       <slot />
-      <div class="flex justify-center pt-4 space-x-2">
-        <IconsGithubIcon />
-        <IconsTwitterIcon />
-      </div>
     </div>
   </div>
 </template>
