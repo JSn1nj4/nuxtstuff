@@ -16,7 +16,7 @@
       </nav>
     </div>
     <div class="mx-auto w-full max-w-4xl sm:px-6 lg:px-8">
-      <PageTitle v-if="routeName">{{ routeName }}</PageTitle>
+      <PageTitle v-if="pageTitle">{{ pageTitle }}</PageTitle>
       <slot />
     </div>
   </div>
@@ -33,14 +33,12 @@ interface NavLink {
   target?: Target
 }
 
-const route = useRoute()
-
 const links: NavLink[] = [
   { name: 'About', href: '/about', },
   { name: 'Developer', href: 'https://elliotderhay.com', target: "_blank", },
 ]
 
-const routeName: ComputedRef<string | null> = computed(() => {
+const pageTitle: ComputedRef<string | null> = computed(() => {
   if(!globals.pageTitle) return null
 
   if(globals.pageTitle.length < 1) return null
