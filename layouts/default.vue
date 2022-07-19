@@ -25,6 +25,7 @@
 <script setup lang="ts">
 import {ComputedRef} from "@vue/reactivity";
 import {Target} from "~/components/_types/html-attributes";
+import {globals} from "~/components/_stores/globals";
 
 interface NavLink {
   name: string
@@ -40,15 +41,11 @@ const links: NavLink[] = [
 ]
 
 const routeName: ComputedRef<string | null> = computed(() => {
-  const blacklist = [
-    'index',
-  ]
+  if(!globals.pageTitle) return null
 
-  const name: string = useRoute().name as string
+  if(globals.pageTitle.length < 1) return null
 
-  if(!name || name.length < 1) return null
-
-  return blacklist.includes(name) ? null : name
+  return globals.pageTitle
 })
 
 console.log(route)

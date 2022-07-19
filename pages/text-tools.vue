@@ -22,7 +22,11 @@
 </template>
 
 <script lang="ts" setup>
+import {globals} from "~/components/_stores/globals";
+
 const title = ref('Text Tools')
+
+globals.pageTitle = title.value
 
 const mutators = {
   capitalize: (v: string): string => {

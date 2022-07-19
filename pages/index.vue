@@ -26,6 +26,9 @@
 
 <script lang="ts" setup>
 import {ref} from "#imports";
+import {globals} from "~/components/_stores/globals";
 
 const title = ref('Home')
+
+globals.pageTitle = null
 </script>
