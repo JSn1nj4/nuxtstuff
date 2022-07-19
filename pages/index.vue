@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-8 bg-white dark:bg-slate-700 overflow-hidden shadow sm:rounded-lg p-6">
+  <div class="bg-white dark:bg-slate-700 overflow-hidden shadow sm:rounded-lg p-6">
     <Head>
       <Title>{{ title }}</Title>
       <Meta name="description" content="A collection of mini Vue projects" />
