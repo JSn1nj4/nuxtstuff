@@ -45,8 +45,6 @@ const pageTitle: ComputedRef<string | null> = computed(() => {
 
   return globals.pageTitle
 })
-
-console.log(route)
 </script>
 
 <style lang="pcss">
