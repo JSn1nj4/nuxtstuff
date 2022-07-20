@@ -12,10 +12,23 @@
         <FormRadioGroup :list="radioList" name="transform" text-size="text-lg" :click-handler="setFilter" />
       </div>
       <div class="col-span-2">
-        <TextHeading type="h4">Input</TextHeading>
-        <textarea type="text" class="w-full transition-colors border-2 border-solid border-slate-300 dark:border-slate-500 hover:border-slate-800 dark:hover:border-slate-400 rounded mb-4 p-2 bg-slate-100 dark:bg-slate-600" @keyup="setInput" />
-        <TextHeading type="h4">Output</TextHeading>
-        <div class="w-full border-2 border-solid border-slate-200 dark:border-slate-600 rounded h-36 p-2 bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400">{{ output }}</div>
+        <FormInputGroup
+          id="text-formatter-input"
+          :keyup-handler="setInput"
+          name="text-formatter-input"
+          type="textarea"
+        >
+          Input
+        </FormInputGroup>
+        <FormInputGroup
+          disabled
+          id="text-formatter-output"
+          name="text-formatter-output"
+          type="textarea"
+          :value="output"
+        >
+          Output
+        </FormInputGroup>
       </div>
     </div>
   </div>
@@ -23,6 +36,7 @@
 
 <script lang="ts" setup>
 import {globals} from "~/components/_stores/globals";
+import {ComputedRef} from "@vue/reactivity";
 
 const title = ref('Text Tools')
 
@@ -43,7 +57,7 @@ const mutators = {
 
 const input = ref('')
 const filter = ref<Function>((v: string): string => v)
-const output = computed((): string => filter.value(input.value))
+const output: ComputedRef<string> = computed((): string => filter.value(input.value))
 
 function setInput(e: Event): void {
   input.value = (e.target as HTMLInputElement).value
