@@ -35,7 +35,7 @@
 </template>
 
 <script lang="ts" setup>
-import {globals} from "~/components/_stores/globals";
+import {globals} from "~/composables/stores/globals";
 import {ComputedRef} from "@vue/reactivity";
 
 const title = ref('Text Tools')
