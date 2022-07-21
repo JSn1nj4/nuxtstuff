@@ -25,7 +25,6 @@
            disabled
            id="date-formatter-output"
            name="date-formatter-output"
-           type="textarea"
            :value="formatter.output"
          >
           Output
@@ -39,31 +38,43 @@
 </template>
 
 <script lang="ts" setup>
-import {globals} from "~/components/_stores/globals";
-import {ComputedRef, Ref} from "@vue/reactivity";
+import {globals} from "~/composables/stores/globals"
+import {ComputedRef, Ref} from "@vue/reactivity"
 
 const title = ref('Date/Time Tools')
 globals.pageTitle = title.value
 
-// interface MutatorCollection<T> {
-//   (v: T): T
-// }
-
-interface FieldIO<T> {
+interface IFieldIO<T> {
   listener: (e: Event) => void
   input: Ref<T>
   output: ComputedRef<T>
-  // mutators?: MutatorCollection<T>
+  mutators?: object
+  mutation: Ref<T>
 }
 
-const formatter: FieldIO<string> = {
+class FieldIO {
+  constructor(
+    mutators: any,
+  ) {
+    this.mutators = {
+      return: (v: string) => v,
+      ...mutators,
+    }
+  }
   listener(e: Event): void {
     this.input.value = (e.target as HTMLInputElement).value
-  },
-  input: ref(''),
-  output: computed((): string => '')
-  // mutators: {
-  //   mutate(v: string) => v.toString()
-  // },
+  }
+  input: Ref<string> = ref('')
+  output: ComputedRef<string> = computed<string>((): string => {
+    return this.mutators[this.mutation.value](this.input.value)
+  })
+  mutators?: object
+  mutation: Ref<string> = ref('return')
 }
+
+const formatter: IFieldIO<string> = new FieldIO(
+  {
+    mutate(v: string) { return v.toString() }
+  }
+)
 </script>

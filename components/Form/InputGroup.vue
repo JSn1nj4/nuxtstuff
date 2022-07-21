@@ -29,7 +29,7 @@
 
 <script setup lang="ts">
 
-import {ComputedRef} from "@vue/reactivity";
+import {ComputedRef, Ref} from "@vue/reactivity";
 
 type TextField =
   | "email"
@@ -45,7 +45,7 @@ const props = withDefaults(defineProps<{
   id?: string,
   name?: string,
   type?: TextField,
-  value?: string | ComputedRef,
+  value?: ComputedRef | Ref,
 }>(), {
   disabled: false,
   type: 'text'
