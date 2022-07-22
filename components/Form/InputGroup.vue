@@ -7,10 +7,10 @@
     </label>
     <textarea
       v-if="type === 'textarea'"
+      :class="classes"
+      :disabled="disabled"
       :id="id"
       :name="name"
-      :disabled="disabled"
-      :class="classes"
       :value="value"
       @keyup="keyupHandler"
     />
@@ -45,7 +45,7 @@ const props = withDefaults(defineProps<{
   id?: string,
   name?: string,
   type?: TextField,
-  value?: ComputedRef | Ref,
+  value?: ComputedRef | Ref | string,
 }>(), {
   disabled: false,
   type: 'text'
