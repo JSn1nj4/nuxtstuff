@@ -16,8 +16,8 @@
        <div>
          <FormInputGroup
            id="date-formatter-input"
-           :keyup-handler="formatter.listener"
            name="date-formatter-input"
+           :keyup-handler="formatter.listener.bind(formatter)"
          >
            Input
          </FormInputGroup>
@@ -44,37 +44,5 @@ import {FieldIO, IFieldIO} from "~/library/forms/FieldIO.class";
 const title = ref('Date/Time Tools')
 globals.pageTitle = title.value
 
-interface IFieldIO<T> {
-  listener: (e: Event) => void
-  input: Ref<T>
-  output: ComputedRef<T>
-  mutators?: object
-  mutation: Ref<T>
-}
-
-class FieldIO {
-  constructor(
-    mutators: any,
-  ) {
-    this.mutators = {
-      return: (v: string) => v,
-      ...mutators,
-    }
-  }
-  listener(e: Event): void {
-    this.input.value = (e.target as HTMLInputElement).value
-  }
-  input: Ref<string> = ref('')
-  output: ComputedRef<string> = computed<string>((): string => {
-    return this.mutators[this.mutation.value](this.input.value)
-  })
-  mutators?: object
-  mutation: Ref<string> = ref('return')
-}
-
-const formatter: IFieldIO<string> = new FieldIO(
-  {
-    mutate(v: string) { return v.toString() }
-  }
-)
+const formatter: IFieldIO<string> = new FieldIO()
 </script>
