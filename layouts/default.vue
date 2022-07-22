@@ -24,8 +24,8 @@
 
 <script setup lang="ts">
 import {ComputedRef} from "@vue/reactivity";
-import {Target} from "~/components/_types/html-attributes";
-import {globals} from "~/composables/stores/globals";
+import {Target} from "~/library/types/html-attributes";
+import {globals} from "~/library/stores/globals";
 
 interface NavLink {
   name: string

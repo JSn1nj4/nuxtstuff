@@ -26,7 +26,7 @@
 
 <script lang="ts" setup>
 import {ref} from "#imports";
-import {globals} from "~/composables/stores/globals";
+import {globals} from "~/library/stores/globals";
 
 const title = ref('Home')
 
