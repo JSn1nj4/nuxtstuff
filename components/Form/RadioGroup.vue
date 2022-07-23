@@ -11,7 +11,6 @@
       :id="radio.id"
       :name="name"
       :value="radio.value"
-      :click-handler="clickHandler"
     >
       {{ radio.label }}
     </FormRadioButton>
@@ -29,7 +28,6 @@ interface RadioList {
 }
 
 const props = withDefaults(defineProps<{
-  clickHandler?: Function,
   list: RadioList[],
   name: string,
   spacing?: BorderBottom,

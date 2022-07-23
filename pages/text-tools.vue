@@ -9,12 +9,12 @@
     </TextHeading>
      <div class="block sm:grid sm:grid-cols-3 gap-10 text-slate-800 dark:text-white mt-4 pt-4 border-t-2 border-t-emerald-500 border-dashed">
       <div class="mt-0.5 mb-4 sm:mb-0">
-        <FormRadioGroup :list="radioList" name="transform" text-size="text-lg" :click-handler="setFilter" />
+        <FormRadioGroup :list="radioList" name="transform" text-size="text-lg" @click="textFormatters.setFilter($event)" />
       </div>
       <div class="col-span-2">
         <FormInputGroup
           id="text-formatter-input"
-          :keyup-handler="setInput"
+          @keyup="textFormatters.setValue($event)"
           name="text-formatter-input"
           type="textarea"
         >
@@ -25,7 +25,7 @@
           id="text-formatter-output"
           name="text-formatter-output"
           type="textarea"
-          :value="output"
+          :value="textFormatters.output"
         >
           Output
         </FormInputGroup>
@@ -35,37 +35,22 @@
 </template>
 
 <script lang="ts" setup>
-import {globals} from "~/library/stores/globals";
-import {ComputedRef} from "@vue/reactivity";
+import {globals} from "~/library/stores/globals"
+import {FieldIO, IFieldIO} from "~/library/forms/FieldIO.class"
+import {capitalize, lowercase, titlecase, uppercase, urldecode, urlencode} from "~/library/helpers/formatters/string";
 
 const title = ref('Text Tools')
 
 globals.pageTitle = title.value
 
-const mutators = {
-  capitalize: (v: string): string => {
-    return v.charAt(0).toUpperCase() + v.substring(1).toLowerCase()
-  },
-  uppercase: (v: string): string => v.toUpperCase(),
-  lowercase: (v: string): string => v.toLowerCase(),
-  titlecase: (v: string): string => {
-    return v.split(' ').map(mutators.capitalize).join(' ')
-  },
-  urlencode: (v: string): string => encodeURIComponent(v),
-  urldecode: (v: string): string => decodeURIComponent(v),
-}
-
-const input = ref('')
-const filter = ref<Function>((v: string): string => v)
-const output: ComputedRef<string> = computed((): string => filter.value(input.value))
-
-function setInput(e: Event): void {
-  input.value = (e.target as HTMLInputElement).value
-}
-
-function setFilter(e: Event): void {
-  filter.value = mutators[(e.target as HTMLInputElement).value]
-}
+const textFormatters: IFieldIO<string> = new FieldIO({
+  capitalize,
+  uppercase,
+  lowercase,
+  titlecase,
+  urlencode,
+  urldecode
+})
 
 const radioList = [
   { label: 'Capitalize', id: 'capitalize', value: 'capitalize', },
