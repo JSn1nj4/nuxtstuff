@@ -17,7 +17,7 @@
          <FormInputGroup
            id="date-formatter-input"
            name="date-formatter-input"
-           :keyup-handler="formatter.listener.bind(formatter)"
+           @keyup="formatter.listener($event)"
          >
            Input
          </FormInputGroup>
@@ -30,16 +30,13 @@
           Output
          </FormInputGroup>
        </div>
-       <div>
-
-       </div>
     </div>
   </div>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import {globals} from "~/library/stores/globals"
-import {FieldIO, IFieldIO} from "~/library/forms/FieldIO.class";
+import {FieldIO, IFieldIO} from "~/library/forms/FieldIO.class"
 
 const title = ref('Date/Time Tools')
 globals.pageTitle = title.value

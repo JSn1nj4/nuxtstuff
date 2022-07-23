@@ -12,7 +12,6 @@
       :id="id"
       :name="name"
       :value="value"
-      @keyup="keyupHandler"
     />
     <input
       v-else
@@ -22,7 +21,6 @@
       :name="name"
       :type="type"
       :value="value"
-      @keyup="keyupHandler"
     />
   </div>
 </template>
@@ -41,7 +39,6 @@ type TextField =
 
 const props = withDefaults(defineProps<{
   disabled?: boolean,
-  keyupHandler?: Function,
   id?: string,
   name?: string,
   type?: TextField,

@@ -1,19 +1,19 @@
-import {ComputedRef, Ref} from "@vue/reactivity";
+import {ComputedRef, Ref, unref} from "@vue/reactivity";
 import {FunctionCollection} from "~/library/types/basic-constructs";
 
 export interface IFieldIO<T> {
-  listener: (e: Event) => void
   input: Ref<T>
-  output: ComputedRef<T>
+  _output: ComputedRef<T>
   filters: FunctionCollection
-  filter: Ref<Function>
+  _filter: Ref<Function>
+  listener: Function
 }
 
 export class FieldIO implements IFieldIO<string>{
   input: Ref<string>
   filters: FunctionCollection
-  filter: Ref<Function>
-  output: ComputedRef<string>
+  _filter: Ref<Function>
+  readonly _output: ComputedRef<string>
 
   constructor(filters: any = {}) {
     this.input = ref('')
@@ -21,8 +21,21 @@ export class FieldIO implements IFieldIO<string>{
       default: (v: string) => v,
       ...filters,
     }
-    this.filter = ref<Function>(this.filters.default)
-    this.output = computed((): string => this.filter.value(this.input.value))
+    this._filter = ref<Function>(this.filters.default)
+    this._output = computed((): string => this._filter.value(this.input.value))
+  }
+
+  get output() {
+    return unref(this._output)
+  }
+
+  set filter(filter: string) {
+    if(!this.filters?.[filter]) {
+      console.log(`Filter '${filter}' does not exist in filters list.`)
+      return
+    }
+
+    this._filter.value = this.filters[filter]
   }
 
   listener(e: Event): void {
