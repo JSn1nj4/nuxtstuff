@@ -17,7 +17,7 @@
          <FormInputGroup
            id="date-formatter-input"
            name="date-formatter-input"
-           @keyup="formatter.listener($event)"
+           @keyup="formatter.setValue($event)"
          >
            Input
          </FormInputGroup>

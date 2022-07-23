@@ -5,14 +5,15 @@ export interface IFieldIO<T> {
   input: Ref<T>
   _output: ComputedRef<T>
   filters: FunctionCollection
-  _filter: Ref<Function>
-  listener: Function
+  filter: Ref<Function>
+  setFilter: (e: Event) => void
+  setValue: (e: Event) => void
 }
 
 export class FieldIO implements IFieldIO<string>{
   input: Ref<string>
   filters: FunctionCollection
-  _filter: Ref<Function>
+  filter: Ref<Function>
   readonly _output: ComputedRef<string>
 
   constructor(filters: any = {}) {
@@ -21,24 +22,26 @@ export class FieldIO implements IFieldIO<string>{
       default: (v: string) => v,
       ...filters,
     }
-    this._filter = ref<Function>(this.filters.default)
-    this._output = computed((): string => this._filter.value(this.input.value))
+    this.filter = ref<Function>(this.filters.default)
+    this._output = computed((): string => this.filter.value(this.input.value))
   }
 
   get output() {
     return unref(this._output)
   }
 
-  set filter(filter: string) {
+  setFilter(e: Event) {
+    const filter = (e.target as HTMLInputElement).value
+
     if(!this.filters?.[filter]) {
       console.log(`Filter '${filter}' does not exist in filters list.`)
       return
     }
 
-    this._filter.value = this.filters[filter]
+    this.filter.value = this.filters[filter]
   }
 
-  listener(e: Event): void {
+  setValue(e: Event): void {
     this.input.value = (e.target as HTMLInputElement).value
   }
 }
