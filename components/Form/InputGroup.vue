@@ -10,8 +10,8 @@
       :class="classes"
       :disabled="disabled"
       :id="id"
-      :name="name"
-      :value="value"
+      :name='name'
+      v-model='value'
     />
     <input
       v-else
@@ -19,15 +19,15 @@
       :disabled="disabled"
       :id="id"
       :name="name"
-      :type="type"
-      :value="value"
+      :type='type'
+      v-model='value'
     />
   </div>
 </template>
 
 <script setup lang="ts">
 
-import {ComputedRef, Ref} from "@vue/reactivity";
+import { ComputedRef, Ref } from '@vue/reactivity'
 
 type TextField =
   | "email"

@@ -17,18 +17,18 @@
          <FormRadioGroup :list="dateFormatRadioList" name="transform" text-size="text-lg" @change="dateFormatter.setFilter($event)" />
        </div>
        <div class="col-span-2">
-         <FormInputGroup
-           id="date-formatter-input"
-           name="date-formatter-input"
-           @keyup="dateFormatter.setValue($event)"
+         <form-input-group
+           id='date-formatter-input'
+           name='date-formatter-input'
+           v-model='dateValue'
          >
            Input
-         </FormInputGroup>
+         </form-input-group>
          <FormInputGroup
            disabled
            id="date-formatter-output"
-           name="date-formatter-output"
-           :value="dateFormatter.output"
+           name='date-formatter-output'
+           v-model='dateValue'
          >
           Output
          </FormInputGroup>
@@ -38,19 +38,21 @@
 </template>
 
 <script setup lang="ts">
-import {globals} from "~/library/stores/globals"
-import {FieldIO, IFieldIO} from "~/library/forms/FieldIO.class"
+import { globals } from '~/library/stores/globals'
+import { FieldIO, IFieldIO } from '~/library/forms/FieldIO.class'
 import getUnixTime from 'date-fns/getUnixTime'
 
 const title = ref('Date/Time Tools')
 globals.pageTitle = title.value
 
+const dateValue = ref('')
+
 const dateFormatter: IFieldIO<string> = new FieldIO({
-  unix(v: string ): string {
+  unix (v: string): string {
 
     // Assumed input is integer, which is already a valid Unix timestamp
     let int = parseInt(v)
-    if(int.toString().length === v.length) {
+    if (int.toString().length === v.length) {
       return int.toString()
     }
 
