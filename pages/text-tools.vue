@@ -7,9 +7,9 @@
     <TextHeading type="h2" class="text-slate-900 dark:text-slate-50 mb-3 font-normal">
       Simple text-formatting tools to help transform content
     </TextHeading>
-     <div class="block sm:grid sm:grid-cols-3 gap-10 text-slate-800 dark:text-white mt-4 pt-4 border-t-2 border-t-emerald-500 border-dashed">
+    <div class="block sm:grid sm:grid-cols-3 gap-10 text-slate-800 dark:text-white mt-4 pt-4 border-t-2 border-t-emerald-500 border-dashed">
       <div class="mt-0.5 mb-4 sm:mb-0">
-        <FormRadioGroup :list="radioList" name="transform" text-size="text-lg" @click="textFormatters.setFilter($event)" />
+        <FormRadioGroup :list="radioList" name="transform" text-size="text-lg" @change="textFormatters.setFilter($event)" />
       </div>
       <div class="col-span-2">
         <FormInputGroup
@@ -53,6 +53,7 @@ const textFormatters: IFieldIO<string> = new FieldIO({
 })
 
 const radioList = [
+  { label: 'Input', id: 'default', value: 'default', checked: true },
   { label: 'Capitalize', id: 'capitalize', value: 'capitalize', },
   { label: 'UPPERCASE', id: 'uppercase', value: 'uppercase', },
   { label: 'lowercase', id: 'lowercase', value: 'lowercase', },

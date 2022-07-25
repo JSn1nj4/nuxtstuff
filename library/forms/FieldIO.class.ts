@@ -22,6 +22,7 @@ export class FieldIO implements IFieldIO<string>{
       default: (v: string) => v,
       ...filters,
     }
+    console.log(`Filters: '${Object.keys(this.filters).join("','")}'`)
     this.filter = ref<Function>(this.filters.default)
     this._output = computed((): string => this.filter.value(this.input.value))
   }

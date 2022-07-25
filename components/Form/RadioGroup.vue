@@ -11,6 +11,7 @@
       :id="radio.id"
       :name="name"
       :value="radio.value"
+      :checked="radio.checked"
     >
       {{ radio.label }}
     </FormRadioButton>
@@ -22,6 +23,7 @@ import {BorderBottom} from "~/library/types/spacing";
 import {TextSize} from "~/library/types/typography";
 
 interface RadioList {
+  checked?: boolean
   label: string
   id: string
   value: string
