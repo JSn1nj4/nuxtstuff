@@ -7,7 +7,6 @@ export interface IFieldIO<T> {
   filters: FunctionCollection
   filter: Ref<Function>
   setFilter: (e: Event) => void
-  setValue: (e: Event) => void
 }
 
 export class FieldIO implements IFieldIO<string>{
@@ -36,9 +35,5 @@ export class FieldIO implements IFieldIO<string>{
     }
 
     this.filter.value = this.filters[filter]
-  }
-
-  setValue(e: Event): void {
-    this.input.value = (e.target as HTMLInputElement).value
   }
 }

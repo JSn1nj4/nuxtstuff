@@ -14,7 +14,7 @@
          </TextHeading>
        </div>
        <div class="mt-0.5 mb-4 sm:mb-0">
-         <FormRadioGroup :list="dateFormatRadioList" name="transform" text-size="text-lg" @change="dateFormatter.setFilter($event)" />
+         <form-radio-group :list="dateFormatRadioList" name="transform" text-size="text-lg" @change="dateFormatter.setFilter($event)" />
        </div>
        <div class="col-span-2">
          <form-input-group
@@ -41,12 +41,28 @@
 import { globals } from '~/library/stores/globals'
 import { FieldIO, IFieldIO } from '~/library/forms/FieldIO.class'
 import getUnixTime from 'date-fns/getUnixTime'
+import {pipe} from "~/library/helpers/pipes";
+import {formatISO, fromUnixTime} from "date-fns";
 
 const title = ref('Date/Time Tools')
 globals.pageTitle = title.value
 
 const dateFormatter: IFieldIO<string> = new FieldIO({
-  unix (v: string): string {
+  iso8601(v: string): string {
+    // console.log(`value: ${formatISO(new Date(v))}`)
+    let intstr: string = parseInt(v).toString()
+    if(intstr.length === v.length) {
+      return pipe(v,
+        parseInt,
+        fromUnixTime,
+        (value) => new Date(value),
+        formatISO
+      )
+    }
+
+    return v
+  },
+  unix(v: string): string {
 
     // Assumed input is integer, which is already a valid Unix timestamp
     let int = parseInt(v)
@@ -62,11 +78,12 @@ const dateFormatter: IFieldIO<string> = new FieldIO({
 
     console.log(`Cannot parse to Unix timestamp. Result: ${unix}`)
     return v
-  }
+  },
 })
 
 const dateFormatRadioList = [
   { label: 'Input', id: 'default', value: 'default', checked: true },
+  { label: 'ISO 8601', id: 'iso8601', value: 'iso8601' },
   { label: 'Unix Timestamp', id: 'unix', value: 'unix' },
 ]
 </script>
