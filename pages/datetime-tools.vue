@@ -41,8 +41,8 @@
 import { globals } from '~/library/stores/globals'
 import { FieldIO, IFieldIO } from '~/library/forms/FieldIO.class'
 import getUnixTime from 'date-fns/getUnixTime'
-import {pipe} from "~/library/helpers/pipes";
-import {formatISO, fromUnixTime} from "date-fns";
+import {pipe} from '~/library/helpers/pipes'
+import {formatISO, fromUnixTime} from 'date-fns'
 
 const title = ref('Date/Time Tools')
 globals.pageTitle = title.value
