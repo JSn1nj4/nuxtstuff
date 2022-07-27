@@ -7,20 +7,22 @@
     </label>
     <textarea
       v-if="type === 'textarea'"
+      @input="changed"
       :class="classes"
       :disabled="disabled"
       :id="id"
       :name='name'
-      v-model='value'
+      :value="modelValue"
     />
     <input
       v-else
+      @input="changed"
       :class="classes"
       :disabled="disabled"
       :id="id"
       :name="name"
       :type='type'
-      v-model='value'
+      :value="modelValue"
     />
   </div>
 </template>
@@ -42,11 +44,20 @@ const props = withDefaults(defineProps<{
   id?: string,
   name?: string,
   type?: TextField,
+  modelValue?: ComputedRef | Ref | string,
   value?: ComputedRef | Ref | string,
 }>(), {
   disabled: false,
   type: 'text'
 })
+
+const emit = defineEmits(['update:modelValue'])
+
+function changed(e: Event) {
+  console.log(`Changed: ${e.currentTarget}`)
+
+  emit('update:modelValue', (e.currentTarget as HTMLInputElement).value)
+}
 
 const classes = computed(() => {
   // Classes all input fields should share

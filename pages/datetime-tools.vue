@@ -20,18 +20,18 @@
          <form-input-group
            id='date-formatter-input'
            name='date-formatter-input'
-           v-model='dateValue'
+           v-model="dateFormatter.input.value"
          >
            Input
          </form-input-group>
-         <FormInputGroup
+         <form-input-group
            disabled
            id="date-formatter-output"
            name='date-formatter-output'
-           v-model='dateValue'
+           v-model="dateFormatter.output.value"
          >
           Output
-         </FormInputGroup>
+         </form-input-group>
        </div>
     </div>
   </div>
@@ -44,8 +44,6 @@ import getUnixTime from 'date-fns/getUnixTime'
 
 const title = ref('Date/Time Tools')
 globals.pageTitle = title.value
-
-const dateValue = ref('')
 
 const dateFormatter: IFieldIO<string> = new FieldIO({
   unix (v: string): string {
