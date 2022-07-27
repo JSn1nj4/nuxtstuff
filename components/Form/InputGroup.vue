@@ -7,27 +7,29 @@
     </label>
     <textarea
       v-if="type === 'textarea'"
+      @input="changed"
       :class="classes"
       :disabled="disabled"
       :id="id"
-      :name="name"
-      :value="value"
+      :name='name'
+      :value="modelValue"
     />
     <input
       v-else
+      @input="changed"
       :class="classes"
       :disabled="disabled"
       :id="id"
       :name="name"
-      :type="type"
-      :value="value"
+      :type='type'
+      :value="modelValue"
     />
   </div>
 </template>
 
 <script setup lang="ts">
 
-import {ComputedRef, Ref} from "@vue/reactivity";
+import { ComputedRef, Ref } from '@vue/reactivity'
 
 type TextField =
   | "email"
@@ -42,11 +44,20 @@ const props = withDefaults(defineProps<{
   id?: string,
   name?: string,
   type?: TextField,
+  modelValue?: ComputedRef | Ref | string,
   value?: ComputedRef | Ref | string,
 }>(), {
   disabled: false,
   type: 'text'
 })
+
+const emit = defineEmits(['update:modelValue'])
+
+function changed(e: Event) {
+  console.log(`Changed: ${e.currentTarget}`)
+
+  emit('update:modelValue', (e.currentTarget as HTMLInputElement).value)
+}
 
 const classes = computed(() => {
   // Classes all input fields should share

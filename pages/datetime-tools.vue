@@ -14,35 +14,35 @@
          </TextHeading>
        </div>
        <div class="mt-0.5 mb-4 sm:mb-0">
-         <FormRadioGroup :list="dateFormatRadioList" name="transform" text-size="text-lg" @change="dateFormatter.setFilter($event)" />
+         <form-radio-group :list="dateFormatRadioList" name="transform" text-size="text-lg" @change="dateFormatter.setFilter($event)" />
        </div>
        <div class="col-span-2">
-         <FormInputGroup
-           id="date-formatter-input"
-           name="date-formatter-input"
-           @keyup="dateFormatter.setValue($event)"
+         <form-input-group
+           id='date-formatter-input'
+           name='date-formatter-input'
+           v-model="dateFormatter.input.value"
          >
            Input
-         </FormInputGroup>
-         <FormInputGroup
+         </form-input-group>
+         <form-input-group
            disabled
            id="date-formatter-output"
-           name="date-formatter-output"
-           :value="dateFormatter.output"
+           name='date-formatter-output'
+           v-model="dateFormatter.output.value"
          >
           Output
-         </FormInputGroup>
+         </form-input-group>
        </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import {globals} from "~/library/stores/globals"
-import {FieldIO, IFieldIO} from "~/library/forms/FieldIO.class"
+import { globals } from '~/library/stores/globals'
+import { FieldIO, IFieldIO } from '~/library/forms/FieldIO.class'
 import getUnixTime from 'date-fns/getUnixTime'
-import {formatISO, fromUnixTime} from "date-fns"
-import {pipe} from "~/library/helpers/pipes"
+import {pipe} from '~/library/helpers/pipes'
+import {formatISO, fromUnixTime} from 'date-fns'
 
 const title = ref('Date/Time Tools')
 globals.pageTitle = title.value
@@ -62,11 +62,11 @@ const dateFormatter: IFieldIO<string> = new FieldIO({
 
     return v
   },
-  unix(v: string ): string {
+  unix(v: string): string {
 
     // Assumed input is integer, which is already a valid Unix timestamp
     let int = parseInt(v)
-    if(int.toString().length === v.length) {
+    if (int.toString().length === v.length) {
       return int.toString()
     }
 
